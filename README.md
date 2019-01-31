@@ -9,3 +9,7 @@ Download and Install following :-
 1. [XAMPP](https://www.apachefriends.org/download.html)
 2. [Python](https://www.python.org/downloads/)
 3. [Git](https://git-scm.com/downloads)
+
+## References
+1. [Flask](http://flask.pocoo.org/docs/1.0/)
+2. [Jinja](http://jinja.pocoo.org/docs/2.10/)
