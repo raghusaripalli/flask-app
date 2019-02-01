@@ -10,6 +10,6 @@ Download and Install following :-
 2. [Python](https://www.python.org/downloads/)
 3. [Git](https://git-scm.com/downloads)
 
-## References
+## Documentation
 1. [Flask](http://flask.pocoo.org/docs/1.0/)
 2. [Jinja](http://jinja.pocoo.org/docs/2.10/)
