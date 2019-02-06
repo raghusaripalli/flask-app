@@ -14,3 +14,4 @@ Download and Install following :-
 1. [Flask](http://flask.pocoo.org/docs/1.0/)
 2. [Jinja](http://jinja.pocoo.org/docs/2.10/)
 3. [WTForms](https://wtforms.readthedocs.io)
+4. [Flash](http://flask.pocoo.org/docs/1.0/patterns/flashing/)
