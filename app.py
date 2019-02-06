@@ -68,8 +68,51 @@ def register():
         cur.close()
         # Flash message
         flash('You are now registered and can login', 'success')
-        return redirect(url_for('index'))
+        return redirect(url_for('login'))
     return render_template('register.html', form=form)
+
+
+# User Login
+@app.route("/login", methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        # Get Form Fields
+        username = request.form['username']
+        password_candidate = request.form['password']
+
+        # Create Cursor
+        cur = mysql.connection.cursor()
+
+        # Get user by username
+        result = cur.execute("select * from users where username = %s", [username])
+
+        if result > 0:
+            # Get stored hash
+            data = cur.fetchone()
+            password = data['password']
+
+            # Compare Passwords
+            if sha256_crypt.verify(password_candidate, password):
+                # PASSED
+                session['logged_in'] = True
+                session['username'] = username
+                flash("You are now logged in !!", 'success')
+                cur.close()
+                return redirect(url_for('dashboard'))
+            else:
+                error = 'Wrong Password'
+                cur.close()
+                return render_template("login.html", error=error)
+        else:
+            error = 'Username not found'
+            cur.close()
+            return render_template("login.html", error=error)
+    return render_template('login.html')
+
+
+@app.route("/dashboard")
+def dashboard():
+    return render_template("dashboard.html")
 
 
 if __name__ == '__main__':
